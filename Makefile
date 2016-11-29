@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/21 21:14:35 by tpan              #+#    #+#              #
-#    Updated: 2016/11/23 09:38:13 by tpan             ###   ########.fr        #
+#    Updated: 2016/11/28 16:48:48 by tpan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,7 @@ all: libft $(NAME)
 
 $(NAME): 
 	$(CC) $(CFLAGS) -c $(SRC) $
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME) 
+	ar rcs $(NAME) $(OBJ)
 
 libft:
 	make -C ./libft

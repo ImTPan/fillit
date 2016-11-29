@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 19:13:43 by tpan              #+#    #+#             */
-/*   Updated: 2016/11/27 21:40:18 by tpan             ###   ########.fr       */
+/*   Updated: 2016/11/29 15:27:57 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,17 @@ static int		tet_chk_connect(char **tet_grid, int row, int col)
 	return (connections);
 }
 
-int		tet_file_chk(char *tab, int *num_tets)
+t_etris *new tetr(char **tet_grid, int x, int y, char letter)
 {
+	t_etris *tetris;
 
+	tetris = ft_memalloc(sizeof(t_etris));
+	tetris->x[] = x;
+	tetris->y[] = y;
+	tetris->str = tet_grid;
+	tetris->c = letter;
+	tetris->next = NULL;
+	tetris->prev = NULL;
+	return (tetris);
 }
 
