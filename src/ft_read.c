@@ -33,7 +33,7 @@ void		ft_memcpycat(char **input_file, char *buff)
 ** Read entire input file into memory
 */
 
-t_etris		*read_input_file(char *file, t_etris *tab)
+t_etris		*read_input_file(char *file, t_etris *piece_list)
 {
 	int		fd;
 	int		ret;
@@ -56,6 +56,6 @@ t_etris		*read_input_file(char *file, t_etris *tab)
 	}
 	close(fd);
 	ft_putstr(input_file);
-	validate_input(input_file, tab);
+	validate_input(input_file, piece_list);
 	return (tab);
 }

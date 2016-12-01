@@ -12,9 +12,21 @@
 
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+t_etris		*create_list()
 {
-	t_etris		pieces[27];
+	t_etris		list;
+
+	if ((list = (t_etris *)malloc(sizeof(*list))) == NULL)
+		return (NULL);
+	list->c = '\0'
+	list->str = NULL;
+	list->next = NULL;
+	list->prev = NULL;
+}
+
+int			main(int argc, char **argv)
+{
+	t_etris		*pieces;
 
 	if (argc != 2)
 		ft_abort(0);
