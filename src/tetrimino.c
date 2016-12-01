@@ -1,31 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_input.c                                   :+:      :+:    :+:   */
+/*   tetrimino.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/26 19:13:43 by tpan              #+#    #+#             */
-/*   Updated: 2016/11/29 15:27:57 by tpan             ###   ########.fr       */
+/*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
+/*   Updated: 2016/11/30 18:54:28 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		tet_chk_connect(char **tet_grid, int row, int col)
+static int		tet_chk(char **tet_grid)
 {
 	int		connections;
+	int		row;
+	int		col;
+	int 	hash;
 
 	connections = 0;
-	if (col != 0 && tet_grid[row][col - 1] == '#')
-		connections++;
-	if (col != 4 && tet_grid[row][col + 1] == '#')
-		connections++;
-	if (row != 0 && tet_grid[row - 1][col] == '#')
-		connections++;
-	if (row != 3 && tet_grid[row + 1][col] == '#')
-		connections++;
-	return (connections);
+	while (row < 5)
+	{	
+		while (col < 4)
+		{
+			if (tet_grid[row][col] == '#')
+				hash++;
+			if (col != 0 && tet_grid[row][col - 1] == '#')
+				connections++;
+			if (col != 4 && tet_grid[row][col + 1] == '#')
+				connections++;
+			if (row != 0 && tet_grid[row - 1][col] == '#')
+				connections++;
+			if (row != 3 && tet_grid[row + 1][col] == '#')
+				connections++;
+			col++;
+		}
+		row++;
+	}
+	if ((connections == 6 || connections == 8) && hash == 4)
+		return (1);
+	else
+		return (0);
 }
 
 t_etris *new tetr(char **tet_grid, int x, int y, char letter)
