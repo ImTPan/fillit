@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:47:44 by bbauer            #+#    #+#             */
-/*   Updated: 2016/11/23 16:14:38 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/11/30 18:36:16 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ void	ft_abort(int err_code)
 		ft_putstr("malloc error at initialization!\n");
 	if (err_code == 4)
 		ft_putstr("error opening or reading specified file!\n");
+	if (err_code == 5)
+		ft_putstr("invalid char in input file!");
+	if (err_code == 6)
+		ft_putstr("invalid input file!");
 	exit(0);
 }
