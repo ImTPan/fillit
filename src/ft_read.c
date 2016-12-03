@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:54:04 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/02 20:51:45 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/03 09:56:30 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,30 @@
 #define BUFF_SIZE 20
 
 /*
-**	Checks for any invalid characters in input file
-*/
-int			valid_chars(char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] != '\n' && str[i] != '.' && str[i] != '#')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-/*
-** This will check that the file as a whole and each tetramino is valid.
+** This will check that the file contains no invalid characters and copy each
+** piece to the list. The add_piece_to_list function will perform further
+** validation of each piece indivitually..
 */
 
 void		validate_input(char *file, t_etris *piece_list)
 {
 	int		i;
-	int		j;
 	int		piece_count;
 
-	if (!valid_chars(file))
-		ft_abort(5);
 	i = 0;
-	j = 0;
 	piece_count = 0;
-	while (file[i] != '\0')
+	while (file[i] == '\n' || file[i] == '.' || file[i] == '#')
 	{
-		j = 0;
-		while (j < 21 && j != '\0')
-			j++;
-		if (j == 21)
+		
+		if (i > 0 && (i % 21) == 0)
 		{
-			add_piece_to_list(piece_list, &file[i]);
-			i += 21;
+			add_piece_to_list(piece_list, &file[i - 21]);
+			piece_count++;
 		}
-		piece_count++;
-		if (j != 21 || piece_count > 26)
-			ft_abort(6);
+		i++;
 	}
+	if ((i % 21) != 20 || file[i] != '\0')
+		ft_abort(5);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/02 21:31:01 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/03 10:03:48 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void				add_piece_to_list(t_etris *list, char *piece);
 
 t_etris				*read_input_file(char *file, t_etris *tab);
 void				ft_memcpycat(char **input_file, char *buff);
-int					valid_chars(char *str);
 void				validate_input(char *file, t_etris *piece_list);
 
 /*
