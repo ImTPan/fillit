@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/02 20:48:38 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/02 21:03:59 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,17 +104,17 @@ void		add_piece_to_list(t_etris *list, char *piece)
 	return ;
 }
 
-t_etris *new tetr(char **tet_grid, int x, int y, char letter)
-{
-	t_etris *tetris;
-
-	tetris = ft_memalloc(sizeof(t_etris));
-	tetris->x[] = x;
-	tetris->y[] = y;
-	tetris->str = tet_grid;
-	tetris->c = letter;
-	tetris->next = NULL;
-	tetris->prev = NULL;
-	return (tetris);
-}
+//t_etris *new tetr(char **tet_grid, int x, int y, char letter)
+//{
+//	t_etris *tetris;
+//
+//	tetris = ft_memalloc(sizeof(t_etris));
+//	tetris->x[] = x;
+//	tetris->y[] = y;
+//	tetris->str = tet_grid;
+//	tetris->c = letter;
+//	tetris->next = NULL;
+//	tetris->prev = NULL;
+//	return (tetris);
+//}
 

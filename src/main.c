@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 16:51:08 by bbauer            #+#    #+#             */
-/*   Updated: 2016/11/30 17:33:12 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 20:54:36 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int			main(int argc, char **argv)
 {
 	t_etris		*pieces;
 
+	pieces = NULL;
 	if (argc != 2)
 		ft_abort(0);
 	else

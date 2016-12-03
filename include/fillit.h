@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/02 20:44:20 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 21:03:43 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,30 @@ typedef struct		s_etris
 void				ft_abort(int err_code);
 
 /*
+** tetrimino.c
+*/
+
+static int			tet_chk(char **tet_grid);
+void				fill_small_grid(char **grid, char *str);
+void				add_piece_to_list(t_etris *list, char *piece);
+
+/*
 ** ft_read.c
 */
 
 t_etris				*read_input_file(char *file, t_etris *tab);
 void				ft_memcpycat(char **input_file, char *buff);
+int					valid_chars(char *str);
+void				validate_input(char *file, t_etris *piece_list);
+
+/*
+** fill_coords.c
+*/
+
+void				fill_coords(int *xpnt, int *ypnt, char **map);
+void				set_origin(int *xzero,int *yzero, int x, int y);
+void				set_x_y(int *xpnt, int *ypnt, int x, int y);
+
 /*
 ** main.c
 */
