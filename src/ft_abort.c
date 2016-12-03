@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:47:44 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/02 18:05:50 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 18:54:23 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ void	ft_abort(int err_code)
 		ft_putstr("invalid input file!\n");
 	if (err_code == 7)
 		ft_putstr("malloc error in add_piece_to_list\n");
+	if (err_code == 8)
+		ft_putstr("invalid tetramino in input file!\n");
 	exit(0);
 }
