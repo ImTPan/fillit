@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/02 19:03:30 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 20:12:51 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,28 @@ static int		tet_chk(char **tet_grid)
 /*
 ** This function converts the string to a 2d map.
 */
+
 void		fill_small_grid(char **grid, char *str)
 {
 	int		x;
 	int		y;
+	int		i;
 
-
-	while (y < 4)
+	i = 0;
+	y = 0;
+	while (y < 4 && i < 20)
 	{
+		x = 0;
 		while (x < 4)
 		{
-			
+			grid[y][x] = str[i];
+			x++;
+			i++;
 		}
+		y++;
+		i++;
 	}
-}
-
-/*
-** This function will calculate the x,y coordinate values of each point of the
-** tetramino for easy math when fitting the piece to the map.
-*/
-void		fill_coords(int *x, int *y, char **map)
-{
-	
+	return ;
 }
 
 /*
@@ -87,9 +87,9 @@ void		add_piece_to_list(t_etris *list, char *piece)
 		i++;
 	}
 	if (!list)
-		if (NULL == (list = (t_etris)malloc(sizeof(t_etris *)))
+		if (NULL == (list = (t_etris)malloc(sizeof(t_etris)))
 			ft_abort(7);
-	else if (NULL == (list->next = (t_etris)malloc(sizeof(t_etris *)))
+	else if (NULL == (list->next = (t_etris)malloc(sizeof(t_etris)))
 		ft_abort(7);
 	list = list->next;
 	list->str = strndup(piece, 21);
