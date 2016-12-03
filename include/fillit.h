@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/11/30 18:53:54 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 20:44:20 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct		s_etris
 {
 	char			**small_grid;	// 2-d representation of the piece
 	char			c;		//letter of alphabet used to represent piece in solution
-	char			*str	//raw map of piece from input file, probably won't need
+	char			*str;	//raw map of piece from input file, probably won't need
 	int				x[4];	//x,y coordinates of each of the four filled positions of
 	int				y[4];	//the input, starting with 0,0 as the top-most  piece
 	struct t_etris	*next;	//encountered from left to right, and all other coordinates
