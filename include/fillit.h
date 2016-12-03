@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/02 21:11:21 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 21:31:01 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct		s_etris
 	char			*str;	//raw map of piece from input file, probably won't need
 	int				x[4];	//x,y coordinates of each of the four filled positions of
 	int				y[4];	//the input, starting with 0,0 as the top-most  piece
-	struct t_etris	*next;	//encountered from left to right, and all other coordinates
-	struct t_etris	*prev;	//relative to that position.
+	struct s_etris	*next;	//encountered from left to right, and all other coordinates
+	struct s_etris	*prev;	//relative to that position.
 }					t_etris;
 
 /*
