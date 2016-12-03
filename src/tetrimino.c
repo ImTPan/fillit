@@ -6,11 +6,11 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/02 20:12:51 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 20:48:38 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
 static int		tet_chk(char **tet_grid)
 {
@@ -20,6 +20,9 @@ static int		tet_chk(char **tet_grid)
 	int 	hash;
 
 	connections = 0;
+	hash		= 0;
+	col			= 0;
+	row			= 0;
 	while (row < 5)
 	{	
 		while (col < 4)
