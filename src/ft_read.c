@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:54:04 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/02 18:55:12 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 20:51:45 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			valid_chars(char *str)
 ** This will check that the file as a whole and each tetramino is valid.
 */
 
-void		validate_input(char file, t_etris *piece_list)
+void		validate_input(char *file, t_etris *piece_list)
 {
 	int		i;
 	int		j;
