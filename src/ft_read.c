@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:54:04 by bbauer            #+#    #+#             */
-/*   Updated: 2016/11/30 18:53:33 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 18:17:36 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,34 @@ int			valid_chars(char *str)
 	}
 	return (1);
 }
+
+/*
+** Traverses to the end of the list of pieces and then fills in data for a new
+** piece.
+*/
+
+void		add_piece_to_list(t_etris *list, char *piece)
+{
+	int		i;
+
+	i = 0;
+	while (list->next)
+	{
+		list = list->next;
+		i++;
+	}
+	if (!list)
+		if (NULL == (list = (t_etris *)malloc(sizeof(t_etris *)))
+			ft_abort(7);
+	else if (NULL == (list->next = (t_etris *)malloc(sizeof(t_etris *)));
+		ft_abort(7);
+	list = list->next;
+	list->str = strndup(piece, 21);
+	list->c = 'A' + i;
+
+
+}
+
 /*
 ** This will check that the file as a whole and each tetramino is valid.
 */
@@ -48,12 +76,14 @@ void		validate_input(char file, t_etris *piece_list)
 	while (file[i] != '\0')
 	{
 		j = 0;
-		while (j < 21 && j '\0')
+		while (j < 21 && j != '\0')
 			j++;
 		if (j == 21)
 		{
-			strndup( // 21chars to current piece);
+			strndup(&file[i]);
 			i += 21;
+			piece_count++;
+			list
 		}
 		if (j != 21 || piece_count > 26)
 			ft_abort(6);
