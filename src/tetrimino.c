@@ -6,13 +6,13 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/02 21:03:59 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 21:15:04 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		tet_chk(char **tet_grid)
+int			tet_chk(char **tet_grid)
 {
 	int		connections;
 	int		row;
@@ -90,9 +90,9 @@ void		add_piece_to_list(t_etris *list, char *piece)
 		i++;
 	}
 	if (!list)
-		if (NULL == (list = (t_etris)malloc(sizeof(t_etris)))
+		if (NULL == (list = (t_etris *)malloc(sizeof(t_etris))))
 			ft_abort(7);
-	else if (NULL == (list->next = (t_etris)malloc(sizeof(t_etris)))
+	else if (NULL == (list->next = (t_etris *)malloc(sizeof(t_etris))))
 		ft_abort(7);
 	list = list->next;
 	list->str = strndup(piece, 21);

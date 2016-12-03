@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/02 21:03:43 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/02 21:11:21 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void				ft_abort(int err_code);
 ** tetrimino.c
 */
 
-static int			tet_chk(char **tet_grid);
+int				tet_chk(char **tet_grid);
 void				fill_small_grid(char **grid, char *str);
 void				add_piece_to_list(t_etris *list, char *piece);
 
