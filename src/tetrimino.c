@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/03 17:51:56 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/03 18:10:13 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ void		fill_small_grid(char ***grid, char *str)
 	int		y;
 	int		i;
 
-	*grid = (char **)malloc(sizeof(char *) * 4);
+	if (NULL == (*grid = (char **)malloc(sizeof(char *) * 4)))
+		ft_abort(1);
 	i = 0;
 	y = 0;
 	while (y < 4 && i < 20)
 	{
 		if (NULL == (*grid[y] = (char *)malloc(sizeof(char) * 4)))
-			ft_abort(0);
+			ft_abort(1);
 		x = 0;
 		while (x < 4)
 		{
