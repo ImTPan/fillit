@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:54:04 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/03 09:56:30 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/03 16:47:09 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_etris		*read_input_file(char *file, t_etris *piece_list)
 {
 	int		fd;
 	int		ret;
-	char	buff[21];
+	char	buff[BUFF_SIZE + 1];
 	char	*input_file;
 
 	input_file = NULL;
@@ -78,7 +78,7 @@ t_etris		*read_input_file(char *file, t_etris *piece_list)
 			ft_abort(4);
 		buff[ret] = '\0';
 		if (!input_file)
-			input_file = strndup(buff, 21);
+			input_file = strndup(buff, BUFF_SIZE + 1);
 		else
 			ft_memcpycat(&input_file, buff);
 	}

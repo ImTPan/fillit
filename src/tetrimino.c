@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/02 21:34:18 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/03 17:51:56 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,24 @@ int			tet_chk(char **tet_grid)
 ** This function converts the string to a 2d map.
 */
 
-void		fill_small_grid(char **grid, char *str)
+void		fill_small_grid(char ***grid, char *str)
 {
 	int		x;
 	int		y;
 	int		i;
 
+	*grid = (char **)malloc(sizeof(char *) * 4);
 	i = 0;
 	y = 0;
 	while (y < 4 && i < 20)
 	{
+		if (NULL == (*grid[y] = (char *)malloc(sizeof(char) * 4)))
+			ft_abort(0);
 		x = 0;
 		while (x < 4)
 		{
-			grid[y][x] = str[i];
+			ft_putstr("iter\n");
+			*grid[y][x] = str[i];
 			x++;
 			i++;
 		}
@@ -96,11 +100,19 @@ void		add_piece_to_list(t_etris *list, char *piece)
 	}
 	else if (NULL == (list->next = (t_etris *)malloc(sizeof(t_etris))))
 		ft_abort(7);
-	list = list->next;
-	list->str = strndup(piece, 21);
+	if (list->next)
+		list = list->next;
+	list->str = ft_strndup(piece, 21);
+	ft_putstr("successfully copied piece:\n");
+	ft_putstr(list->str);
 	list->c = 'A' + i;
-	fill_small_grid(list->small_grid, list->str);
+	ft_putchar(list->c);
+	ft_putstr("\n^ current letter!\n");
+	ft_putstr("Here comes a segfault!\n");
+	fill_small_grid(&list->small_grid, list->str);
+	ft_putstr("WINNING!!!\n");
 	fill_coords(list->x, list->y, list->small_grid);
+	ft_putstr("WINNING!!!\n");
 	if (!tet_chk(list->small_grid))
 		ft_abort(8);
 	return ;
