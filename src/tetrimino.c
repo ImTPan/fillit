@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/06 13:12:35 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/06 14:34:13 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,32 +89,26 @@ char		**fill_small_grid(char *str)
 ** piece.
 */
 
-void		add_piece_to_list(t_etris *list, char *piece)
+void		add_piece_to_list(t_etris **list, char *piece, int index)
 {
-	int		i;
-
-	i = 0;
-	while (list->next)
+	while ((*list)->next)
+		*list = (*list)->next;
+	if (index > 0)
 	{
-		list = list->next;
-		i++;
-	}
-	if (i > 0)
-	{
-		if (NULL == (list->next = (t_etris *)malloc(sizeof(t_etris))))
+		if (NULL == ((*list)->next = (t_etris *)malloc(sizeof(t_etris))))
 			ft_abort(7);
-		list = list->next;
-		initialize_list(list);
+		*list = (*list)->next;
+		initialize_list_item(*list);
 	}
-	list->str = ft_strndup(piece, 21);
+	(*list)->str = ft_strndup(piece, 21);
 	ft_putstr("copying piece:\n");
-	ft_putstr(list->str);
-	list->c = 'A' + i;
-	ft_putchar(list->c);
+	ft_putstr((*list)->str);
+	(*list)->c = 'A' + (index / 21) - 1;
+	ft_putchar((*list)->c);
 	ft_putstr("\n^ current letter!\n");
-	list->small_grid = fill_small_grid(list->str);
-	fill_coords(list->x, list->y, list->small_grid);
-	if (!tet_chk(list->small_grid))
+	(*list)->small_grid = fill_small_grid((*list)->str);
+	fill_coords((*list)->x, (*list)->y, (*list)->small_grid);
+	if (!tet_chk((*list)->small_grid))
 		ft_abort(8);
 	ft_putstr("Piece added to list successfully!\n");
 	return ;

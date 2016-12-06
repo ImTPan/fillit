@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/06 13:19:44 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/06 14:01:23 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void				ft_abort(int err_code);
 
 int					tet_chk(char **tet_grid);
 char				**fill_small_grid(char *str);
-void				add_piece_to_list(t_etris *list, char *piece);
+void				add_piece_to_list(t_etris **list, char *piece, int index);
 
 /*
 ** ft_read.c
