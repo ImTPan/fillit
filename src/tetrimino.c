@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/05 21:26:15 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/06 13:12:35 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ int			tet_chk(char **tet_grid)
 	int		connections;
 	int		row;
 	int		col;
-	int 	hash;
+	int		hash;
 
 	connections = 0;
 	hash		= 0;
-	col			= 0;
 	row			= 0;
 	while (row < 4)
 	{
@@ -95,28 +94,24 @@ void		add_piece_to_list(t_etris *list, char *piece)
 	int		i;
 
 	i = 0;
-	if (list)
-		while (list->next)
-		{
-			list = list->next;
-			i++;
-		}
-	if (!list)
+	while (list->next)
 	{
-		if (NULL == (list = (t_etris *)malloc(sizeof(t_etris))))
-			ft_abort(7);
-	}
-	else if (NULL == (list->next = (t_etris *)malloc(sizeof(t_etris))))
-		ft_abort(7);
-	if (list->next)
 		list = list->next;
+		i++;
+	}
+	if (i > 0)
+	{
+		if (NULL == (list->next = (t_etris *)malloc(sizeof(t_etris))))
+			ft_abort(7);
+		list = list->next;
+		initialize_list(list);
+	}
 	list->str = ft_strndup(piece, 21);
 	ft_putstr("copying piece:\n");
 	ft_putstr(list->str);
 	list->c = 'A' + i;
 	ft_putchar(list->c);
 	ft_putstr("\n^ current letter!\n");
-	ft_putstr("Here comes a segfault!\n");
 	list->small_grid = fill_small_grid(list->str);
 	fill_coords(list->x, list->y, list->small_grid);
 	if (!tet_chk(list->small_grid))
@@ -124,18 +119,3 @@ void		add_piece_to_list(t_etris *list, char *piece)
 	ft_putstr("Piece added to list successfully!\n");
 	return ;
 }
-
-//t_etris *new tetr(char **tet_grid, int x, int y, char letter)
-//{
-//	t_etris *tetris;
-//
-//	tetris = ft_memalloc(sizeof(t_etris));
-//	tetris->x[] = x;
-//	tetris->y[] = y;
-//	tetris->str = tet_grid;
-//	tetris->c = letter;
-//	tetris->next = NULL;
-//	tetris->prev = NULL;
-//	return (tetris);
-//}
-

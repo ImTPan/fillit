@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 20:10:57 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/02 21:00:16 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/05 21:48:54 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,49 +58,3 @@ void		fill_coords(int *xpnt, int *ypnt, char **map)
 		y++;
 	}
 }
-
-//////////////ORIGINAL VERSION////////////////
-
-/*
-** This function will calculate the x,y coordinate values of each point of the
-** tetramino for easy math when fitting the piece to the map.
-*/
-
-//void		fill_coords(int *xpnt, int *ypnt, char **map)
-//{
-//	int		x;
-//	int		y;
-//	int		xzero;
-//	int		yzero;
-//	int		i;
-//
-//	i = 0;
-//	xzero = -1;
-//	yzero = -1;
-//	y = 0;
-//	while (y < 4)
-//	{
-//		x = 0;
-//		while (++x < 4)
-//		{
-//			if (map[y][x] == '#')
-//			{
-//				if (yxero == -1 && xzero == -1)
-//				{
-//					xzero = x;
-//					yzero = y;
-//					xpnt[i] = 0;
-//					ypnt[i] = 0;
-//				}
-//				else
-//				{
-//					xpnt[i] = xzero - x;
-//					ypnt[i] = yzero - y;
-//				}
-//				i++;
-//			}
-//			x++;
-//		}
-//		y++;
-//	}
-//}

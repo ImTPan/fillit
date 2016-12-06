@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/05 20:11:09 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/06 13:19:44 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,10 @@ void				set_x_y(int *xpnt, int *ypnt, int x, int y);
 
 int					main(int argc, char **argv);
 
+/*
+** lists.c
+*/
+
+void				initialize_list_item(t_etris *list_item);
 
 #endif
