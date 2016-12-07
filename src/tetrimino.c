@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/06 17:44:47 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/07 07:45:03 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,26 @@ char		**fill_small_grid(char *str)
 }
 
 /*
+** just making sure the coordinates are being calculated correctly. This will
+** be an unnecessary function in the final version.
+*/
+
+void		print_coords(int *x, int *y)
+{
+	int i;
+
+	i = 0;
+	while (i < 4)
+	{
+		ft_putstr("\nCOORDS\nX: ");
+		ft_putnbr(x[i]);
+		ft_putstr("\nY: ");
+		ft_putnbr(y[i]);
+		i++;
+	}
+}
+
+/*
 ** Traverses to the end of the list of pieces and then fills in data for a new
 ** piece.
 */
@@ -109,7 +129,8 @@ void		add_piece_to_list(t_etris *list, char *piece, int piece_count)
 	list->small_grid = fill_small_grid(list->str);
 	if (!tet_chk(list->small_grid))
 		ft_abort(8);
-	fill_coords(&list->x, &list->y, list->small_grid);
+	fill_coords(&list->x, &list->y, list->small_grid, -1, -1);
+	print_coords(list->x, list->y);
 	ft_putstr("Piece added to list successfully!\n");
 	return ;
 }

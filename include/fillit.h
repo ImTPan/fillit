@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/06 17:36:20 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/07 07:32:24 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void				validate_input(char *file, t_etris *piece_list);
 ** fill_coords.c
 */
 
-void				fill_coords(int **xpnt, int **ypnt, char **map);
+void				fill_coords(int **xpnt, int **ypnt, char **map, int xzer, int yzer);
 void				set_origin(int *xzero,int *yzero, int x, int y);
 void				set_x_y(int *xpnt, int *ypnt, int x, int y);
 
