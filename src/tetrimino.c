@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/07 07:45:03 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/07 14:41:50 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void		add_piece_to_list(t_etris *list, char *piece, int piece_count)
 		list = list->next;
 		initialize_list_item(list);
 	}
-	list->str = ft_strndup(piece, 21);
+	list->str = ft_strndup(piece, 20);
 	ft_putstr("copying piece:\n");
 	ft_putstr(list->str);
 	list->c = 'A' + piece_count;
@@ -131,6 +131,5 @@ void		add_piece_to_list(t_etris *list, char *piece, int piece_count)
 		ft_abort(8);
 	fill_coords(&list->x, &list->y, list->small_grid, -1, -1);
 	print_coords(list->x, list->y);
-	ft_putstr("Piece added to list successfully!\n");
 	return ;
 }

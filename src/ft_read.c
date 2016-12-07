@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:54:04 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/06 17:13:12 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/07 14:32:22 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void		validate_input(char *file, t_etris *piece_list)
 	}
 	if ((i % 21) != 20 || file[i] != '\0')
 		ft_abort(5);
+	else
+		add_piece_to_list(piece_list, &file[i - 20], piece_count);
 	return ;
 }
 
