@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 20:10:57 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/06 17:42:18 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/07 07:49:04 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,20 @@ void		print_map(char **map)
 /*
 ** This function will calculate the x,y coordinate values of each point of the
 ** tetrimino for easy math when fitting the piece to the map. The results are
-** saved in xpnt and ypnt int arrays.
+** saved in xpnt and ypnt int arrays. xzero and yzero are local variables but
+** are passed in as -1 to save four lines and make this function norm compliant.
 */
 
-void		fill_coords(int **xpnt, int **ypnt, char **map)
+void		fill_coords(int **xpnt, int **ypnt, char **map, int xzer, int yzer)
 {
 	int		x;
 	int		y;
-	int		xzero;
-	int		yzero;
-	int		i;
 
-	ft_putstr("verify map:\n");
-	print_map(map);
-	i = 1;
-	xzero = -1;
-	yzero = -1;
 	*xpnt = (int *)malloc(sizeof(int) * 4);
 	*ypnt = (int *)malloc(sizeof(int) * 4);
-	set_x_y(*xpnt, *ypnt, 0, 0);
+	if (*xpnt == NULL || *ypnt == NULL)
+		ft_abort(9);
+	set_x_y(++*xpnt, ++*ypnt, 0, 0);
 	y = 0;
 	while (y < 4)
 	{
@@ -75,11 +70,10 @@ void		fill_coords(int **xpnt, int **ypnt, char **map)
 		while (++x < 4)
 			if (map[y][x - 1] == '#')
 			{
-				if (yzero == -1 && xzero == -1)
-					set_origin(&xzero, &yzero, (x - 1), y);
+				if (yzer == -1 && xzer == -1)
+					set_origin(&xzer, &yzer, (x - 1), y);
 				else
-					set_x_y(xpnt[i], ypnt[i], (x - 1), y);
-				i++;
+					set_x_y(++*xpnt, ++*ypnt, (x - 1), y);
 			}
 		y++;
 	}
