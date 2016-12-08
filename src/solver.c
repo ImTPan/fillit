@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:50:09 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/07 19:43:26 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/07 22:37:36 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void		reset_solution(char **grid)
 		free(grid[i])
 	free(grid);
 }
-
- 
 
 int		attempt_place(t_etris *piece, char **tet_map, int col, int row)
 {
