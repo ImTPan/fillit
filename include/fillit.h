@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/08 11:25:32 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 12:42:55 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 typedef struct		s_etris
 {
 	char			**small_grid;	// 2-d representation of the piece
-	char			c;		//letter of alphabet used to represent piece in solution
+	char			letter;		//letter of alphabet used to represent piece in solution
 	char			*str;	//raw map of piece from input file, probably won't need
 	int				*x;	//x,y coordinates of each of the four filled positions of
 	int				*y;	//the input, starting with 0,0 as the top-most  piece
@@ -41,7 +41,7 @@ void				ft_abort(int err_code);
 ** tetrimino.c
 */
 
-int					tet_chk(char **tet_grid);
+int					tet_chk(char **tet_grid, int connections, int row, int hash);
 char				**fill_small_grid(char *str);
 void				add_piece_to_list(t_etris *list, char *piece, int index);
 
@@ -57,9 +57,7 @@ void				validate_input(char *file, t_etris *piece_list);
 ** fill_coords.c
 */
 
-void				fill_coords(int **xpnt, int **ypnt, char **map, int xzer, int yzer);
-void				set_origin(int *xzero,int *yzero, int x, int y);
-void				set_x_y(int *xpnt, int *ypnt, int x, int y);
+void				fill_coords(t_etris *piece, int xzer, int yzer);
 
 /*
 ** main.c

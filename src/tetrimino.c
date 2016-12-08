@@ -6,50 +6,44 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/08 11:34:39 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 13:14:02 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			tet_chk(char **tet_grid)
-{
-	int		connections;
-	int		row;
-	int		col;
-	int		hash;
+/*
+** tet_chk makes sure that there are only 4 hashes in the piece and that each
+** hash is touching by counting the number of connections between them.
+** The variables row, hash, and connections are all passed in as zero to save
+** lines (norm compliance!)
+*/
 
-	connections = 0;
-	hash		= 0;
-	row			= 0;
+int			tet_chk(char **tet_grid, int connections, int row, int hash)
+{
+	int		col;
+
 	while (row < 4)
 	{
 		col = 0;
-		while (col < 4)
-		{
-			if (tet_grid[row][col] == '#')
+		while (col++ < 4)
+			if (tet_grid[row][col - 1] == '#')
 			{
 				hash++;
-				if (col != 0 && tet_grid[row][col - 1] == '#')
+				if (col != 0 && tet_grid[row][col - 2] == '#')
 					connections++;
-				if (col != 3 && tet_grid[row][col + 1] == '#')
+				if (col != 3 && tet_grid[row][col] == '#')
 					connections++;
-				if (row != 0 && tet_grid[row - 1][col] == '#')
+				if (row != 0 && tet_grid[row - 1][col - 1] == '#')
 					connections++;
-				if (row != 3 && tet_grid[row + 1][col] == '#')
+				if (row != 3 && tet_grid[row + 1][col - 1] == '#')
 					connections++;
 			}
-			col++;
-		}
 		row++;
 	}
 	if ((connections == 6 || connections == 8) && hash == 4)
-	{
-		ft_putstr("Piece passes tet_chk\n");
 		return (1);
-	}
-	else
-		return (0);
+	return (0);
 }
 
 /*
@@ -81,7 +75,7 @@ char		**fill_small_grid(char *str)
 		y++;
 		i++;
 	}
-	return grid;
+	return (grid);
 }
 
 /*
@@ -108,7 +102,7 @@ void		print_coords(int *x, int *y)
 ** Calculates the height and width of the piece.
 */
 
-void		calc_dimensions(t_etris piece)
+void		calc_dimensions(t_etris *piece)
 {
 	int		i;
 
@@ -140,15 +134,15 @@ void		add_piece_to_list(t_etris *list, char *piece, int piece_count)
 		initialize_list_item(list);
 	}
 	list->str = ft_strndup(piece, 20);
-	ft_putstr("copying piece:\n");
+	ft_putstr("\n-----------Copying piece:-----------\n");
 	ft_putstr(list->str);
 	list->letter = 'A' + piece_count;
-	ft_putchar(list->c);
+	ft_putchar(list->letter);
 	ft_putstr("\n^ current letter!\n");
 	list->small_grid = fill_small_grid(list->str);
-	if (!tet_chk(list->small_grid))
+	if (!tet_chk(list->small_grid, 0, 0, 0))
 		ft_abort(8);
-	fill_coords(&list->x, &list->y, list->small_grid, -1, -1);
+	fill_coords(list, -1, -1);
 	print_coords(list->x, list->y); // THIS SHOULD BE REMOVED FOR FINAL VERSION
 	calc_dimensions(list);
 	return ;
