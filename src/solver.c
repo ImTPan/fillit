@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:50:09 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/08 10:42:06 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/08 12:29:25 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		attempt_place(t_etris *piece, char **tet_map, int col, int row)
 		if	(type[i] != '.')
 			return (0);
 	}
-	place_piece(tet, tet_map, colrow, tet->letter);
+	place_piece(piece, tet_map, colrow, t_etris->letter);
 	return (1);
 }
 
@@ -69,19 +69,19 @@ static int		solve_grid(t_etris *piece, char **map, int map_size)
 	return (0);
 }
 
-void	place_piece(t_etris *piece,t_etris *str,int colrow, char mark)
+void	place_piece(t_etris *piece,t_etris **small_grid,int colrow, char mark)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (i < piece->y)
+	while (i < piece->height)
 	{
 		j = 0;
-		while (j < piece->x)
+		while (j < piece->width)
 		{
 			if (ft_isalpha(piece->next))
-				map->array[t_etris->y+j][t_etris->x +i] = '.';	
+				map[t_etris->y+j][t_etris->x+i] = mark;	
 			j++;
 		}
 		i++;
