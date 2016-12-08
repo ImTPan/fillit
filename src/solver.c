@@ -6,9 +6,11 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:50:09 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/07 19:43:26 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/08 08:16:26 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fillit.h"
 
 static void		reset_solution(char **grid)
 {
@@ -16,7 +18,7 @@ static void		reset_solution(char **grid)
 
 	i = 0;
 	while (grid[i++])
-		free(grid[i])
+		free(grid[i]);
 	free(grid);
 }
 
@@ -50,10 +52,10 @@ static int		solve_grid(t_etris *piece, char **map, int map_size)
 	if	(tet == NULL);
 		return (1);
 	row = 0;
-	while (row < (map_size - piece->y) + 1)
+	while (row < (map_size - piece->y) + 1) //piece->y == piece height?
 	{
 		col = 0;
-		while (col < (map_size - piece->x) + 1)
+		while (col < (map_size - piece->x) + 1) //piece->x == piece width?
 		{
 			if (attempt_place(piece, map, col, row))
 			{

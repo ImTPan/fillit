@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 20:10:57 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/07 22:39:28 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 08:51:36 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,6 @@ void		set_x_y(int *xpnt, int *ypnt, int x, int y)
 {
 	*xpnt = x;
 	*ypnt = y;
-}
-
-/*
-** For testing purposes only!
-*/
-
-void		print_map(char **map)
-{
-	int y;
-	int x;
-
-	y = 0;
-	while (y < 4)
-	{
-		x = 0;
-		while (x < 4)
-		{
-			ft_putchar(map[y][x]);
-			x++;
-		}
-		ft_putchar('\n');
-		y++;
-	}
-	return ;
 }
 
 /*
