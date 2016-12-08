@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/07 22:31:50 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 08:49:05 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ void		print_coords(int *x, int *y)
 	i = 0;
 	while (i < 4)
 	{
-		ft_putstr("\nCOORDS\nX: ");
+		ft_putstr("\nX,Y: ");
 		ft_putnbr(x[i]);
-		ft_putstr("\nY: ");
+		ft_putchar(',');
 		ft_putnbr(y[i]);
 		i++;
 	}

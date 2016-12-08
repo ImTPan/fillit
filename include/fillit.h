@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/07 07:32:24 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 09:30:39 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,20 @@ void				set_x_y(int *xpnt, int *ypnt, int x, int y);
 */
 
 int					main(int argc, char **argv);
+char				**make_new_map(int map_size);
+void				free_map(char **map, int map_size);
+void				print_map(char **map, int map_size);
 
 /*
 ** lists.c
 */
 
 void				initialize_list_item(t_etris *list_item);
+
+/*
+** solver.c
+*/
+
+
 
 #endif
