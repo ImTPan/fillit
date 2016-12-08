@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:54:04 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/07 14:32:22 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 11:38:04 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ t_etris		*read_input_file(char *file, t_etris *piece_list)
 			ft_memcpycat(&input_file, buff);
 	}
 	close(fd);
-	ft_putstr(input_file); // FOR TESTING PURPOSES ONLY TO CONFIRM INPUT WAS READ
 	validate_input(input_file, piece_list);
 	return (piece_list);
 }

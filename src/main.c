@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 16:51:08 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/08 10:43:07 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 12:12:32 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ char		**make_new_map(int map_size)
 	int		i;
 
 	i = 0;
-	if (NULL == (map = (char **)malloc(sizeof(char *) * map_size)));
+	map = (char **)malloc(sizeof(char *) * map_size);
+	if (map == NULL)
 		ft_abort(10);
 	while (i < map_size)
 	{
-		if (NULL == (map[i] = (char *)malloc(sizeof(char) * map_size)));
+		map[i] = (char *)malloc(sizeof(char) * map_size);
+		if (map[i] == NULL)
 			ft_abort(10);
 		i++;
 	}
@@ -70,8 +72,8 @@ char		**make_new_map(int map_size)
 int			main(int argc, char **argv)
 {
 	t_etris		pieces;
-	char		**map;
-	int			map_size;
+//	char		**map;
+//	int			map_size;
 
 	if (argc != 2)
 		ft_abort(0);
@@ -79,7 +81,7 @@ int			main(int argc, char **argv)
 	{
 		initialize_list_item(&pieces);
 		read_input_file(argv[1], &pieces);
-		map_size = 2;
+/*		map_size = 2;
 		make_new_map(map_size);
 		while (!solve_grid(pieces, map, map_size))
 		{
@@ -89,6 +91,6 @@ int			main(int argc, char **argv)
 		ft_printmap(map, map_size);
 		ft_putstr(" __ \n/   \\\n|o o|\n| > |\n|__/|  /\\\n|   |_ ||\n|   |  \\
 					|\n|  J   )_)\n \\____/\n    |\n  =\'\n");
-	}
+*/	}
 	return (0);
 }
