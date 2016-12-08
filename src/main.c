@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 16:51:08 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/08 10:43:07 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 11:53:48 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ char		**make_new_map(int map_size)
 	int		i;
 
 	i = 0;
-	if (NULL == (map = (char **)malloc(sizeof(char *) * map_size)));
+	map = (char **)malloc(sizeof(char *) * map_size);
+	if (map == NULL)
 		ft_abort(10);
 	while (i < map_size)
 	{
-		if (NULL == (map[i] = (char *)malloc(sizeof(char) * map_size)));
+		map[i] = (char *)malloc(sizeof(char) * map_size);
+		if (map[i] == NULL)
 			ft_abort(10);
 		i++;
 	}

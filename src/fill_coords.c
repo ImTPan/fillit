@@ -6,19 +6,19 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 20:10:57 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/08 08:51:36 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 11:50:20 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		set_origin(int *xzero, int *yzero, int x, int y)
+static void		set_origin(int *xzero, int *yzero, int x, int y)
 {
 	*xzero = x;
 	*yzero = y;
 }
 
-void		set_x_y(int *xpnt, int *ypnt, int x, int y)
+static void		set_x_y(int *xpnt, int *ypnt, int x, int y)
 {
 	*xpnt = x;
 	*ypnt = y;
@@ -31,17 +31,14 @@ void		set_x_y(int *xpnt, int *ypnt, int x, int y)
 ** are passed in as -1 to save four lines and make this function norm compliant.
 */
 
-void		fill_coords(int **xpnt, int **ypnt, char **map, int xzer, int yzer)
+void			fill_coords(int **xpnt, int **ypnt, char **map,
+							int xzer, int yzer)
 {
 	int		x;
 	int		y;
 	int		i;
 
 	i = 1;
-	*xpnt = (int *)malloc(sizeof(int) * 4);
-	*ypnt = (int *)malloc(sizeof(int) * 4);
-	if (*xpnt == NULL || *ypnt == NULL)
-		ft_abort(9);
 	set_x_y(&(*xpnt[0]), &(*ypnt[0]), 0, 0);
 	y = 0;
 	while (y < 4)
@@ -55,7 +52,7 @@ void		fill_coords(int **xpnt, int **ypnt, char **map, int xzer, int yzer)
 					set_origin(&xzer, &yzer, x, y);
 				else
 				{
-					set_x_y(&((*xpnt)[i]), &((*ypnt)[i]), (x - xzer), (y - yzer));
+					set_x_y(&((*xpnt)[i]), &((*ypnt)[i]), x - xzer, y - yzer);
 					i++;
 				}
 			}

@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/08 08:49:05 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 11:34:39 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,25 @@ void		print_coords(int *x, int *y)
 }
 
 /*
+** Calculates the height and width of the piece.
+*/
+
+void		calc_dimensions(t_etris piece)
+{
+	int		i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if ((piece->x[i] + 1) > piece->width)
+			piece->width = (piece->x[i] + 1);
+		if ((piece->y[i] + 1) > piece->height)
+			piece->height = (piece->y[i] + 1);
+		i++;
+	}
+}
+
+/*
 ** Traverses to the end of the list of pieces and then fills in data for a new
 ** piece.
 */
@@ -123,13 +142,14 @@ void		add_piece_to_list(t_etris *list, char *piece, int piece_count)
 	list->str = ft_strndup(piece, 20);
 	ft_putstr("copying piece:\n");
 	ft_putstr(list->str);
-	list->c = 'A' + piece_count;
+	list->letter = 'A' + piece_count;
 	ft_putchar(list->c);
 	ft_putstr("\n^ current letter!\n");
 	list->small_grid = fill_small_grid(list->str);
 	if (!tet_chk(list->small_grid))
 		ft_abort(8);
 	fill_coords(&list->x, &list->y, list->small_grid, -1, -1);
-	print_coords(list->x, list->y);
+	print_coords(list->x, list->y); // THIS SHOULD BE REMOVED FOR FINAL VERSION
+	calc_dimensions(list);
 	return ;
 }
