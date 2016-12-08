@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/21 21:14:35 by tpan              #+#    #+#              #
-#    Updated: 2016/12/05 08:49:22 by bbauer           ###   ########.fr        #
+#    Updated: 2016/12/07 23:18:23 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,20 +35,18 @@ SRCDIR	= ./src/
 LIBDIR	= ./libft/
 INCDIR	= ./include/
 
-.PHONY: $(NAME), all, clean, fclean, re
+.PHONY: $(NAME), all, clean, fclean, re, libft, libft-clean, libft-fclean
 
 all: $(NAME)
 
-$(NAME): libft $(OBJDIR)
-#	$(CC) $(CFLAGS) -c -I$(INCDIR) -I$(LIBDIR) $(SRC)
-	ar rcs $(NAME) $(OBJ)
-
-$(OBJDIR)%.o: $(SRCDIR)%.c
+$(NAME): libft
+	$(CC) $(CFLAGS) -c -I$(INCDIR) -I$(LIBDIR) $(SRC)
 	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c -I$(INCDIR) -I$(LIBDIR) -o $@ $<
+	mv $(SRCF:.c=.o) $(OBJDIR)
+	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBDIR) -o $@ $<
 
 libft:
-	make -C ./libft
+	make -C ./libft libft.a
 
 libft-clean:
 	make -C ./libft clean
@@ -57,7 +55,7 @@ libft-fclean:
 	make -C ./libft fclean
 
 clean: libft-clean
-	rm -rf $(OBJ)
+	rm -rf $(OBJDIR)
 
 fclean: clean libft-fclean
 	rm -rf $(NAME)
