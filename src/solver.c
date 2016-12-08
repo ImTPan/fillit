@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:50:09 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/06 22:08:07 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/07 18:16:34 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@ static void		reset_solution(char **grid)
 {
 	int i;
 
-	i = -1;
-	while (grid[++i])
+	i = 0;
+	while (grid[i++])
 		free(grid[i])
 	free(grid);
 }
+
+ 
 
 int		attempt_place(t_etris *piece, char **tet_map, int col, int row)
 {
 	int i;
 	int colrow;
 	int **type;
-	i = -1;
+	i = 0;
 	colrow = (col * 10) + r;
 	type = tet->type;
-	while (++i <4)
+	while (i++ <4)
 	{
 		if ((type[i][1] < 0) && (col + type[i][1] < 0))
 			return (0);
