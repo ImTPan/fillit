@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 20:10:57 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/07 14:51:14 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/07 15:48:52 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ void		fill_coords(int **xpnt, int **ypnt, char **map, int xzer, int yzer)
 	*ypnt = (int *)malloc(sizeof(int) * 4);
 	if (*xpnt == NULL || *ypnt == NULL)
 		ft_abort(9);
-	set_x_y(++*xpnt, ++*ypnt, 0, 0);
+	set_x_y((*xpnt)++, (*ypnt)++, 0, 0);
 	y = 0;
 	while (y < 4)
 	{
-		x = 0;
-		while (++x < 4)
+		x = 1;
+		while (x++ < 4)
 			if (map[y][x - 1] == '#')
 			{
 				if (yzer == -1 && xzer == -1)
 					set_origin(&xzer, &yzer, (x - 1), y);
 				else
-					set_x_y(++*xpnt, ++*ypnt, (x - 1), y);
+					set_x_y((*xpnt)++, (*ypnt)++, ((x - 1) - xzer), (y - yzer));
 			}
 		y++;
 	}
