@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/21 21:14:35 by tpan              #+#    #+#              #
-#    Updated: 2016/12/07 23:18:23 by bbauer           ###   ########.fr        #
+#    Updated: 2016/12/07 23:32:19 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCF 	= main.c \
 		  ft_abort.c \
 		  ft_read.c \
 		  fill_coords.c \
-		  tetrimino.c
+		  tetrimino.c \
+		  lists.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRCF:.c=.o))
 
@@ -43,10 +44,10 @@ $(NAME): libft
 	$(CC) $(CFLAGS) -c -I$(INCDIR) -I$(LIBDIR) $(SRC)
 	mkdir -p $(OBJDIR)
 	mv $(SRCF:.c=.o) $(OBJDIR)
-	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBDIR) -o $@ $<
+	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBDIR) $(OBJ) $(LIBFT) -o $@
 
 libft:
-	make -C ./libft libft.a
+	make -C ./libft re
 
 libft-clean:
 	make -C ./libft clean
