@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:50:09 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/08 16:36:49 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/08 16:52:49 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static int		solve_grid(t_etris *piece, char **map, int map_size)
 	if	(tet == NULL);
 		return (1);
 	row = 0;
-	while (row < (map_size - piece->y) + 1) //piece->y == piece height?
+	while (row < (map_size - piece->height) + 1)
 	{
 		col = 0;
-		while (col < (map_size - piece->x) + 1) //piece->x == piece width?
+		while (col < (map_size - piece->width) + 1)
 		{
 			if (attempt_place(piece, map, col, row))
 			{
@@ -62,9 +62,9 @@ static int		solve_grid(t_etris *piece, char **map, int map_size)
 				colrow = (col * 10) + row;
 				place_piece(piece, map, colrow, '.');
 			}
-			c++;
+			col++;
 		}
-		r++;
+		row++;
 	}
 	return (0);
 }
