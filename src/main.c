@@ -36,19 +36,20 @@ void		print_map(char **map, int map_size)
 	return ;
 }
 
+/*
+** frees the current map (for use when the map has been found to be too small)
+*/
+
 void		free_map(char **map, int map_size)
 {
-	int		i;
-
-	i = 0;
-	while (i < map_size)
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
+	while (--map_size >= 0)
+		free(map[map_size]);
 	return ;
 }
+
+/*
+** Creates a new map of map_size dimensions and fills it with '.' characters.
+*/
 
 char		**make_new_map(int map_size)
 {
@@ -64,6 +65,7 @@ char		**make_new_map(int map_size)
 		map[i] = (char *)malloc(sizeof(char) * map_size);
 		if (map[i] == NULL)
 			ft_abort(10);
+		ft_memset(map[i], 46, map_size);
 		i++;
 	}
 	return (map);
