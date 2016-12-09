@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/21 21:14:35 by tpan              #+#    #+#              #
-#    Updated: 2016/12/07 23:32:19 by bbauer           ###   ########.fr        #
+#    Updated: 2016/12/09 15:38:29 by tpan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCF 	= main.c \
 		  ft_read.c \
 		  fill_coords.c \
 		  tetrimino.c \
-		  lists.c
+		  lists.c \
+		  tsolve.c \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRCF:.c=.o))
 
