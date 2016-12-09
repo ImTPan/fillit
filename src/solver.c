@@ -6,7 +6,6 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:50:09 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/08 17:31:38 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +54,6 @@ static int		solve_grid(t_etris *piece, char **map, int map_size)
 	int			row;
 	t_coord		coords;
 
-	if	(tet == NULL);
-		return (1);
 	row = 0;
 	while (row < (map_size - piece->height) + 1)
 	{
