@@ -22,8 +22,8 @@ static void		reset_solution(char **grid)
 }
 
 /*
- make america free again, used to free the grid in case of backtrack. Unsure
- if this implementation can be used to recurse n levels or just all or none
+** make america free again, used to free the grid in case of backtrack. Unsure
+** if this implementation can be used to recurse n levels or just all or none
 */
 
 int		attempt_place(t_etris *piece, t_map *map, int x, int y)
@@ -48,9 +48,9 @@ int		attempt_place(t_etris *piece, t_map *map, int x, int y)
 }
 
 /*
-while within range of height and width, checks validity of placing at that spot
-if the position is occupied by a hash then we can our tetrimino there, however
-if there is anything other than a period than we cannot/should not.
+** while within range of height and width, checks validity of placing at that 
+** spot if the position is occupied by a hash then we can our tetrimino there
+** however if there is anything other than a period than we cannot/should not.
 */
 
 static int		solve_grid(t_etris *piece, char **map, int map_size) 
