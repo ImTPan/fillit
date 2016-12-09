@@ -80,7 +80,7 @@ static int		solve_grid(t_etris *piece, char **map, int map_size)
 	return (0);
 }
 
-void	place_piece(t_etris *piece, t_etris **small_grid, int colrow, char mark)
+void	place_piece(t_etris *piece, t_etris **small_grid, t_etris coords, char mark)
 {
 	int i;
 	int j;
