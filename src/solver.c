@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:50:09 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/08 12:29:25 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/08 16:36:49 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	place_piece(t_etris *piece,t_etris **small_grid,int colrow, char mark)
 		j = 0;
 		while (j < piece->width)
 		{
-			if (ft_isalpha(piece->next))
-				map[t_etris->y+j][t_etris->x+i] = mark;	
+			if (piece->x[j][i] == '#')
+				map->array[t_etris->y+j][t_etris->x+i] = mark;	
 			j++;
 		}
 		i++;
