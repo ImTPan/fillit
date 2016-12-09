@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/08 13:22:49 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/08 17:26:47 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct		s_etris
 	struct s_etris	*next;	//encountered from left to right, and all other coordinates
 	struct s_etris	*prev;	//relative to that position.
 }					t_etris;
+
+typedef struct		s_coord
+{
+	int				col;
+	int				row;
+}					t_coord
 
 /*
 ** ft_abort.c

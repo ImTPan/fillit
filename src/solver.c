@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:50:09 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/08 16:52:49 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/08 17:31:38 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ static void		reset_solution(char **grid)
 		free(grid[i]);
 	free(grid);
 }
+
+/*
+** 
+*/
 
 int		attempt_place(t_etris *piece, char **tet_map, int col, int row)
 {
@@ -41,11 +45,15 @@ int		attempt_place(t_etris *piece, char **tet_map, int col, int row)
 	return (1);
 }
 
+/*
+**
+*/
+
 static int		solve_grid(t_etris *piece, char **map, int map_size) 
 {
-	int		col;
-	int		row;
-	int		colrow;
+	int			col;
+	int			row;
+	t_coord		coords;
 
 	if	(tet == NULL);
 		return (1);
@@ -59,8 +67,10 @@ static int		solve_grid(t_etris *piece, char **map, int map_size)
 			{
 				if (solve_grid(piece->next, map, map_size))
 					return(1);
-				colrow = (col * 10) + row;
-				place_piece(piece, map, colrow, '.');
+				coords->row = row;
+				coords->col = col;
+				//colrow = (col * 10) + row;
+				place_piece(piece, map, coords, '.');
 			}
 			col++;
 		}
@@ -69,7 +79,7 @@ static int		solve_grid(t_etris *piece, char **map, int map_size)
 	return (0);
 }
 
-void	place_piece(t_etris *piece,t_etris **small_grid,int colrow, char mark)
+void	place_piece(t_etris *piece, t_etris **small_grid, int colrow, char mark)
 {
 	int i;
 	int j;
@@ -81,7 +91,7 @@ void	place_piece(t_etris *piece,t_etris **small_grid,int colrow, char mark)
 		while (j < piece->width)
 		{
 			if (piece->x[j][i] == '#')
-				map->array[t_etris->y+j][t_etris->x+i] = mark;	
+				map->array[t_etris->y + j][t_etris->x + i] = mark;
 			j++;
 		}
 		i++;
