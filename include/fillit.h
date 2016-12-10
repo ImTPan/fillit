@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/09 15:04:08 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/09 15:45:18 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct		s_etris
 
 typedef struct		s_coord
 {
-	int				col;
-	int				row;
+	int				x;
+	int				y;
 }					t_coord;
 
 /*

@@ -16,8 +16,8 @@ int			solve_grid(t_etris *piece, char **map, int map_size)
 		col = 0;
 		while (col < map_size - piece->width + 1)
 		{
-			coords->row = row;
-			coords->col = col;
+			coords->x = row;
+			coords->y = col;
 			if (test_place(piece, map, coords))
 			{
 				if (solve_grid(piece->next, map, map_size))
