@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 18:20:26 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/09 18:41:11 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/09 19:35:11 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,24 @@ int			test_place(t_etris *piece, char **map, t_coord *coords)
 {
 	int		i;
 
+	int piecey;
+	int coordsy;
+	int coordsx;
+	int piecex;
+	coordsx = coords->x;
+	coordsy = coords->y;
+
 	i = 0;
 	while (i < 4)
 	{
-		if (map[coords->y + piece->y[i]][coords->x + piece->x[i]] != '.')
+		piecey = piece->y[i];
+		piecex = piece->x[i];
+		if (map[coordsy + piecey][coordsx + piecex] != '.')
+		//if (map[coords->y + piece->y[i]][coords->x + piece->x[i]] != '.')
 			return (0);
 		i++;
 	}
-	place_piece(piece, map, coords, '.');
+	place_piece(piece, map, coords, piece->letter);
 	return (1);
 }
 
@@ -78,6 +88,9 @@ void		place_piece(t_etris *piece, char **map, t_coord *coords, char c)
 
 	i = 0;
 	while (i < 4)
+	{
 		map[coords->y + piece->y[i]][coords->x + piece->x[i]] = c;
+		i++;
+	}
 	return ;
 }
