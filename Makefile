@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/21 21:14:35 by tpan              #+#    #+#              #
-#    Updated: 2016/12/09 15:38:29 by tpan             ###   ########.fr        #
+#    Updated: 2016/12/09 18:44:17 by bbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ INCDIR	= ./include/
 all: $(NAME)
 
 $(NAME): libft
-	$(CC) $(CFLAGS) -c -I$(INCDIR) -I$(LIBDIR) $(SRC)
+	$(CC) $(CFLAGS) -c -I$(INCDIR) -I$(LIBDIR) $(SRC) -g
 	mkdir -p $(OBJDIR)
 	mv $(SRCF:.c=.o) $(OBJDIR)
-	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBDIR) $(OBJ) $(LIBFT) -o $@
+	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBDIR) $(OBJ) $(LIBFT) -o $@ -g
 
 libft:
 	make -C ./libft re

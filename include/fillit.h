@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/09 15:45:18 by tpan             ###   ########.fr       */
+/*   Updated: 2016/12/09 18:39:33 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,14 @@ void				initialize_list_item(t_etris *list_item);
 /*
 ** solver.c
 */
+//int					solve_grid(t_etris *piece, char **map, int map_size);
+
+/*
+** tsolve.c
+*/
+
 int					solve_grid(t_etris *piece, char **map, int map_size);
+int					test_place(t_etris *piece, char **map, t_coord *coords);
+void				place_piece(t_etris *piece, char **map, t_coord *coords, char c);
 
 #endif

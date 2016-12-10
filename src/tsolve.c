@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tsolve.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/09 18:20:26 by bbauer            #+#    #+#             */
+/*   Updated: 2016/12/09 18:41:11 by bbauer           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 /*
@@ -16,13 +28,13 @@ int			solve_grid(t_etris *piece, char **map, int map_size)
 		col = 0;
 		while (col < map_size - piece->width + 1)
 		{
-			coords->x = row;
-			coords->y = col;
-			if (test_place(piece, map, coords))
+			coords.x = row;
+			coords.y = col;
+			if (test_place(piece, map, &coords))
 			{
 				if (solve_grid(piece->next, map, map_size))
 					return (1);
-				place_piece(piece, map, coords, '.');
+				place_piece(piece, map, &coords, '.');
 			}
 			col++;
 		}
@@ -39,18 +51,18 @@ int			solve_grid(t_etris *piece, char **map, int map_size)
 ** have calculated and stored in piece->x and piece->y arrays.
 */
 
-int			test_place(t_etris *piece, char ***map, t_coord coords)
+int			test_place(t_etris *piece, char **map, t_coord *coords)
 {
 	int		i;
 
 	i = 0;
 	while (i < 4)
 	{
-		if (*map[coords->y + piece->y[i]][coords->x + piece->x[i]] != '.')
+		if (map[coords->y + piece->y[i]][coords->x + piece->x[i]] != '.')
 			return (0);
 		i++;
 	}
-	place_piece(piece, map, coords);
+	place_piece(piece, map, coords, '.');
 	return (1);
 }
 
@@ -60,10 +72,12 @@ int			test_place(t_etris *piece, char ***map, t_coord coords)
 ** solution map.
 */
 
-void		place_piece(t_etris *piece, t_etris **small_grid, t_coord coords, char c)
+void		place_piece(t_etris *piece, char **map, t_coord *coords, char c)
 {
 	int		i;
+
+	i = 0;
 	while (i < 4)
-		*map[coords->y + piece->y[i]][coords->x + piece->x[i]] = piece->letter;
+		map[coords->y + piece->y[i]][coords->x + piece->x[i]] = c;
 	return ;
 }
