@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 18:20:26 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/09 19:35:11 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/09 20:47:36 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ int			solve_grid(t_etris *piece, char **map, int map_size)
 	int			row;
 	t_coord		coords;
 
+	print_map(map, map_size);
+	ft_putchar('\n');
 	row = 0;
-	while (row < map_size - piece->height + 1)
+	while (row <= map_size - piece->height)
 	{
 		col = 0;
-		while (col < map_size - piece->width + 1)
+		while (col <= map_size - piece->width)
 		{
 			coords.x = row;
 			coords.y = col;
