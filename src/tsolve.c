@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 18:20:26 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/11 12:36:52 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/11 14:30:55 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ int			solve_grid(t_etris *piece, char **map, int map_size)
 	int			row;
 	t_coord		coords;
 
-	print_map(map, map_size);
-	ft_putchar('\n');
-	if (!piece->next)
+//	print_map(map, map_size);
+	//ft_putchar('\n');
+	if (!piece)
 		return (1);
 	row = 0;
-	while (row < map_size - piece->height)
+	while (row <= (map_size - piece->height) && (piece->height + row) <= map_size)
 	{
-		col = 0;
-		while (col < map_size - piece->width)
+        col = -(piece->left);
+		while (col <= (map_size - piece->right))
 		{
-			coords.x = row;
-			coords.y = col;
-			if (test_place(piece, map, &coords))
+			coords.x = col;
+			coords.y = row;
+			if (test_place(piece, map, &coords, map_size))
 			{
 				if (solve_grid(piece->next, map, map_size))
 					return (1);
@@ -55,24 +55,31 @@ int			solve_grid(t_etris *piece, char **map, int map_size)
 ** have calculated and stored in piece->x and piece->y arrays.
 */
 
-int			test_place(t_etris *piece, char **map, t_coord *coords)
+int			test_place(t_etris *piece, char **map, t_coord *coords, int map_size)
 {
 	int		i;
-/*
+
 	int piecey;
 	int coordsy;
 	int coordsx;
 	int piecex;
 	coordsx = coords->x;
 	coordsy = coords->y;
-*/
+
 	i = 0;
 	while (i < 4)
 	{
-		//piecey = piece->y[i];
-		//piecex = piece->x[i];
-		//if (map[coordsy + piecey][coordsx + piecex] != '.')
-		if (map[coords->y + piece->y[i]][coords->x + piece->x[i]] != '.')
+		piecey = piece->y[i];
+		piecex = piece->x[i];
+		//if (coordsx + piecex < 0 || coordsy + piecey < 0)
+		//	return (0);
+		//if (coordsx + piecex >= map_size || coordsy + piecey >= map_size)
+		//	return (0);
+	
+        
+        map_size = 0;
+        if (map[coordsy + piecey][coordsx + piecex] != '.')
+        //if (map[coords->y + piece->y[i]][coords->x + piece->x[i]] != '.')
 			return (0);
 		i++;
 	}

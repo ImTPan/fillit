@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/11 09:38:29 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/11 14:06:01 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,10 @@ void		calc_dimensions(t_etris *piece)
 	i = 0;
 	while (i < 4)
 	{
-		if ((piece->x[i] + 1) > piece->width)
-			piece->width = (piece->x[i] + 1);
+		if (piece->x[i] > piece->right)
+			piece->right = (piece->x[i] + 1);
+		if (piece->x[i] < piece->left)
+			piece->left = piece->x[i];
 		if ((piece->y[i] + 1) > piece->height)
 			piece->height = (piece->y[i] + 1);
 		i++;
