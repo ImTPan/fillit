@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/11 14:06:01 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/11 14:58:05 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,26 +79,6 @@ char		**fill_small_grid(char *str)
 }
 
 /*
-** just making sure the coordinates are being calculated correctly. This will
-** be an unnecessary function in the final version.
-*/
-
-void		print_coords(int *x, int *y)
-{
-	int i;
-
-	i = 0;
-	while (i < 4)
-	{
-		ft_putstr("\nX,Y: ");
-		ft_putnbr(x[i]);
-		ft_putchar(',');
-		ft_putnbr(y[i]);
-		i++;
-	}
-}
-
-/*
 ** Calculates the height and width of the piece.
 */
 
@@ -136,16 +116,11 @@ void		add_piece_to_list(t_etris *list, char *piece, int piece_count)
 		initialize_list_item(list);
 	}
 	list->str = ft_strndup(piece, 20);
-	ft_putstr("\n-----------Copying piece:-----------\n");
-	ft_putstr(list->str);
 	list->letter = 'A' + piece_count;
-	ft_putchar(list->letter);
-	ft_putstr("\n^ current letter!\n");
 	list->small_grid = fill_small_grid(list->str);
 	if (!tet_chk(list->small_grid, 0, 0, 0))
 		ft_abort(8);
 	fill_coords(list, -1, -1);
-	print_coords(list->x, list->y); // THIS SHOULD BE REMOVED FOR FINAL VERSION
 	calc_dimensions(list);
 	return ;
 }

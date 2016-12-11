@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 16:51:08 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/11 10:15:48 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/11 14:55:18 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,6 @@ int			main(int argc, char **argv)
 		read_input_file(argv[1], &pieces);
 		map_size = 2;
 		map = make_new_map(map_size);
-		ft_putchar('\n');
-		print_map(map, map_size);
-		ft_putchar('\n');
 		while (!solve_grid(&pieces, map, map_size))
 		{
 			free_map(map, map_size);
