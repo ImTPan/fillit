@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/21 21:14:35 by tpan              #+#    #+#              #
-#    Updated: 2016/12/09 18:44:17 by bbauer           ###   ########.fr        #
+#    Updated: 2016/12/11 15:13:04 by tpan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ NAME	= fillit
 CC		= gcc
 
 LIBFT	= ./libft/libft.a
-LIBINC	= -I./libft
-LIBLINK	= -L./libft -lft
 
 CFLAGS 	= -Wall -Wextra -Werror
 
@@ -39,27 +37,25 @@ INCDIR	= ./include/
 
 .PHONY: $(NAME), all, clean, fclean, re, libft, libft-clean, libft-fclean
 
-all: $(NAME)
+all: libft $(NAME)
 
-$(NAME): libft
+$(NAME):
 	$(CC) $(CFLAGS) -c -I$(INCDIR) -I$(LIBDIR) $(SRC) -g
 	mkdir -p $(OBJDIR)
 	mv $(SRCF:.c=.o) $(OBJDIR)
 	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBDIR) $(OBJ) $(LIBFT) -o $@ -g
 
-libft:
-	make -C ./libft re
+libft: $(LIBFT)
 
-libft-clean:
+$(LIBFT):
+	make -C ./libft
+
+clean: 
+	rm -rf $(OBJDIR)
 	make -C ./libft clean
 
-libft-fclean:
-	make -C ./libft fclean
-
-clean: libft-clean
-	rm -rf $(OBJDIR)
-
-fclean: clean libft-fclean
+fclean: clean
 	rm -rf $(NAME)
+	make -C ./libft fclean
 
 re: fclean all 
