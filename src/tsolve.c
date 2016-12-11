@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 18:20:26 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/09 20:47:36 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/11 10:20:27 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int			solve_grid(t_etris *piece, char **map, int map_size)
 
 	print_map(map, map_size);
 	ft_putchar('\n');
+	if (!piece->next)
+		return (1);
 	row = 0;
-	while (row <= map_size - piece->height)
+	while (row < map_size - piece->height)
 	{
 		col = 0;
-		while (col <= map_size - piece->width)
+		while (col < map_size - piece->width)
 		{
 			coords.x = row;
 			coords.y = col;
@@ -56,21 +58,21 @@ int			solve_grid(t_etris *piece, char **map, int map_size)
 int			test_place(t_etris *piece, char **map, t_coord *coords)
 {
 	int		i;
-
+/*
 	int piecey;
 	int coordsy;
 	int coordsx;
 	int piecex;
 	coordsx = coords->x;
 	coordsy = coords->y;
-
+*/
 	i = 0;
 	while (i < 4)
 	{
-		piecey = piece->y[i];
-		piecex = piece->x[i];
-		if (map[coordsy + piecey][coordsx + piecex] != '.')
-		//if (map[coords->y + piece->y[i]][coords->x + piece->x[i]] != '.')
+		//piecey = piece->y[i];
+		//piecex = piece->x[i];
+		//if (map[coordsy + piecey][coordsx + piecex] != '.')
+		if (map[coords->y + piece->y[i]][coords->x + piece->x[i]] != '.')
 			return (0);
 		i++;
 	}

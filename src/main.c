@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 16:51:08 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/09 19:11:18 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/11 10:15:48 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,7 @@ int			main(int argc, char **argv)
 			map = make_new_map(++map_size);
 		}
 		print_map(map, map_size);
-		ft_putstr(" __ \n/   \\\n|o o|\n| > |\n|__/|  /\\\n|   |_ ||\n|   |  \\\
-					|\n|  J   )_)\n \\____/\n    |\n  =\'\n");
+		ft_putstr(" __ \n/   \\\n|o o|\n| > |\n|__/|  /\\\n|   |_ ||\n|   | \\||\n|  J   )_)\n \\____/\n    |\n  =\'\n");
 	}
 	return (0);
 }

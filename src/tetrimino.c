@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:20:26 by tpan              #+#    #+#             */
-/*   Updated: 2016/12/08 13:14:02 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/11 09:38:29 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			tet_chk(char **tet_grid, int connections, int row, int hash)
 				hash++;
 				if (col != 0 && tet_grid[row][col - 2] == '#')
 					connections++;
-				if (col != 3 && tet_grid[row][col] == '#')
+				if (col != 4 && tet_grid[row][col] == '#')
 					connections++;
 				if (row != 0 && tet_grid[row - 1][col - 1] == '#')
 					connections++;
