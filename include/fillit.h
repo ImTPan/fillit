@@ -6,7 +6,7 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/11 19:15:52 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/11 19:34:52 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,35 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+/*
+** **small_grid is a 2d char array representation of the tetrimino
+** letter is the letter of the alphatet used to represent the tetrimino
+** *str is a copy of the string representing the piece in the input file
+** *x an array of 4 x values to corresponed with the array of
+** *y y values to represent the four points of the tetrimino relative to the
+**		first point encountered from left to right at the top of the piece.
+** right is the width to the right of the center piece in units
+** left is the width to the left of point x[0],y[0] (0,0)
+** height is the total height of the tetrimino in units
+** *next is the next item in the list.
+*/
+
 typedef struct		s_etris
 {
-	char			**small_grid;	// 2-d representation of the piece
-	char			letter;		//letter of alphabet used to represent piece in solution
-	char			*str;	//raw map of piece from input file, probably won't need
-	int				*x;	//x,y coordinates of each of the four filled positions of
-	int				*y;	//the input, starting with 0,0 as the top-most  piece
+	char			**small_grid;
+	char			letter;
+	char			*str;
+	int				*x;
+	int				*y;
 	int				right;
 	int				left;
 	int				height;
-	struct s_etris	*next;	//encountered from left to right, and all other coordinates
-	struct s_etris	*prev;	//relative to that position.
+	struct s_etris	*next;
 }					t_etris;
+
+/*
+** Holds a pair of xy coordinates for convenient passing between functions
+*/
 
 typedef struct		s_coord
 {
