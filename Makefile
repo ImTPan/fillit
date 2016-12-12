@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/21 21:14:35 by tpan              #+#    #+#              #
-#    Updated: 2016/12/11 15:13:04 by tpan             ###   ########.fr        #
+#    Updated: 2016/12/11 20:27:49 by tpan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,15 +35,15 @@ SRCDIR	= ./src/
 LIBDIR	= ./libft/
 INCDIR	= ./include/
 
-.PHONY: $(NAME), all, clean, fclean, re, libft, libft-clean, libft-fclean
+.PHONY: $(NAME),all, clean, fclean, re, libft
 
-all: libft $(NAME)
+all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) -c -I$(INCDIR) -I$(LIBDIR) $(SRC) -g
+	$(CC) $(CFLAGS) -c -I$(INCDIR) -I$(LIBDIR) -I $(LIBFT) $(SRC)
 	mkdir -p $(OBJDIR)
 	mv $(SRCF:.c=.o) $(OBJDIR)
-	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBDIR) $(OBJ) $(LIBFT) -o $@ -g
+	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBDIR) $(OBJ) $(LIBFT) -o $@
 
 libft: $(LIBFT)
 
