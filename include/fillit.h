@@ -6,17 +6,17 @@
 /*   By: bbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:05:34 by bbauer            #+#    #+#             */
-/*   Updated: 2016/12/11 13:59:28 by bbauer           ###   ########.fr       */
+/*   Updated: 2016/12/11 19:15:52 by bbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-#include "libft.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
+# include "libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 typedef struct		s_etris
 {
@@ -48,7 +48,8 @@ void				ft_abort(int err_code);
 ** tetrimino.c
 */
 
-int					tet_chk(char **tet_grid, int connections, int row, int hash);
+int					tet_chk(char **tet_grid, int connections, int row,
+						int hash);
 char				**fill_small_grid(char *str);
 void				add_piece_to_list(t_etris *list, char *piece, int index);
 
@@ -82,16 +83,12 @@ void				print_map(char **map, int map_size);
 void				initialize_list_item(t_etris *list_item);
 
 /*
-** solver.c
-*/
-//int					solve_grid(t_etris *piece, char **map, int map_size);
-
-/*
 ** tsolve.c
 */
 
-int					solve_grid(t_etris *piece, char **map, int map_size);
-int					test_place(t_etris *piece, char **map, t_coord *coords, int map_size);
-void				place_piece(t_etris *piece, char **map, t_coord *coords, char c);
+int					solve_grid(t_etris *piece, char **map, int map_dim);
+int					test_place(t_etris *piece, char **map, t_coord *coords);
+void				place_piece(t_etris *piece, char **map, t_coord *coords,
+						char c);
 
 #endif

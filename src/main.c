@@ -92,7 +92,6 @@ int			main(int argc, char **argv)
 			map = make_new_map(++map_size);
 		}
 		print_map(map, map_size);
-		ft_putstr(" __ \n/   \\\n|o o|\n| > |\n|__/|  /\\\n|   |_ ||\n|   | \\||\n|  J   )_)\n \\____/\n    |\n  =\'\n");
 	}
 	return (0);
 }
